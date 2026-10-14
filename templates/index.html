@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#182d29">
+  <title>SmartLib · Your library, connected</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23def28b'/%3E%3Ctext x='17' y='47' font-family='Georgia' font-style='italic' font-weight='bold' font-size='45' fill='%23243832'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='admin.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='settings.js') }}" defer></script>
+</head>
+<body>
+  <div id="boot-screen" class="boot-screen"><span class="brand-mark">S<span>•</span></span><span>Opening your library…</span><span class="spinner"></span></div>
+  <div id="auth-screen" class="auth-screen" hidden>
+    <section class="auth-story" aria-label="Welcome to SmartLib">
+      <a class="brand brand-light" href="/" aria-label="SmartLib home"><span class="brand-mark">S<span>•</span></span><span>SmartLib<span class="brand-dot">.</span></span></a>
+      <div class="auth-story-copy"><span class="eyebrow">A LITTLE CURIOSITY. ENDLESS POSSIBILITIES.</span><h1>Your next chapter<br>starts here.</h1><p>A home for your books, your discoveries, and everything you’re ready to learn.</p></div>
+      <div class="library-illustration" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="illustration-spark spark-one">✦</div><div class="illustration-spark spark-two">✧</div><div class="hero-book book-back"><span>THE ART<br>OF LEARNING</span><small>A new perspective</small></div><div class="hero-book book-front"><span class="cover-top">A SMARTLIB COLLECTION</span><div class="book-symbol">✳</div><span>Ideas that<br>stay with you.</span><small>Open a world of possibility</small></div><div class="floating-note"><span class="note-icon">↗</span><div><strong>Keep growing.</strong><span>One page at a time.</span></div></div><div class="illustration-floor"></div></div>
+      <div class="auth-story-footer"><span class="small-stars">✦ ✦ ✦</span><span>Built for readers. Made for libraries.</span></div>
+    </section>
+    <main class="auth-main">
+      <div class="auth-mobile-brand brand"><span class="brand-mark">S<span>•</span></span><span>SmartLib.</span></div>
+      <div class="auth-form-wrap"><span class="eyebrow muted">YOUR LIBRARY, CONNECTED</span><h2 id="auth-title">Welcome back.</h2><p class="auth-subtitle" id="auth-subtitle">Sign in to pick up where you left off.</p>
+        <div class="auth-tabs" role="tablist" aria-label="Account access"><button class="active" id="login-tab" role="tab" aria-selected="true" aria-controls="login-form" type="button">Sign in</button><button id="register-tab" role="tab" aria-selected="false" aria-controls="register-form" tabindex="-1" type="button">Create account</button></div>
+        <form id="login-form" class="auth-form" role="tabpanel" aria-labelledby="login-tab">
+          <fieldset class="role-choice"><legend>I’m signing in as</legend><label><input type="radio" name="role" value="student" checked><span>Student</span></label><label><input type="radio" name="role" value="admin"><span>Administrator</span></label></fieldset>
+          <label>Email address<input name="email" type="email" placeholder="you@example.com" autocomplete="username" required maxlength="254"></label>
+          <label>Password<div class="password-field"><input name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required><button class="password-toggle" type="button" aria-label="Show password">Show</button></div></label>
+          <div class="form-error" role="alert" hidden></div><button class="btn btn-primary auth-submit" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+        </form>
+        <form id="register-form" class="auth-form" role="tabpanel" aria-labelledby="register-tab" hidden>
+          <div class="form-row"><label>Full name<input name="name" autocomplete="name" placeholder="Your full name" required maxlength="100"></label><label>Student ID <span class="optional">optional</span><input name="student_id" placeholder="e.g. STU-001" maxlength="50"></label></div>
+          <label>Email address<input name="email" type="email" placeholder="you@example.com" autocomplete="email" required maxlength="254"></label>
+          <label>Department <span class="optional">optional</span><input name="department" placeholder="e.g. Computer Science" maxlength="100"></label>
+          <label>Password<div class="password-field"><input name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required><button class="password-toggle" type="button" aria-label="Show password">Show</button></div></label>
+          <div class="form-error" role="alert" hidden></div><button class="btn btn-primary auth-submit" type="submit">Create student account <span aria-hidden="true">↗</span></button>
+        </form>
+        <div class="demo-box"><div><span class="demo-dot"></span><strong>Take a look around</strong><span>Fresh default demo database only.</span></div><div class="demo-buttons"><button type="button" data-demo="student">Student demo <span>↗</span></button><button type="button" data-demo="admin">Admin demo <span>↗</span></button></div><p class="demo-credentials"><span>Student: student@smartlib.local · Student@12345</span><span>Admin: admin@smartlib.local · Admin@12345</span></p></div>
+      </div>
+      <p class="auth-footer">SmartLib Pro <span>·</span> A better way to manage your library</p>
+    </main>
+  </div>
+  <div id="app-shell" class="app-shell" hidden>
+    <div id="sidebar-backdrop" class="sidebar-backdrop" hidden></div>
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="brand brand-light" href="#dashboard"><span class="brand-mark">S<span>•</span></span><span>SmartLib<span class="brand-dot">.</span></span></a>
+      <div class="workspace-label"><span class="workspace-icon">⌂</span><div><strong>Campus Library</strong><span id="workspace-role">Student workspace</span></div><span class="workspace-chevron">⌄</span></div>
+      <nav id="main-nav"></nav>
+      <div class="sidebar-bottom"><div class="sidebar-tip"><span class="tip-star">✦</span><strong>A little every day.</strong><p>The next great idea could be just a page away.</p><a href="#catalog">Find your next read <span>↗</span></a></div><button id="profile-nav" class="sidebar-profile" type="button"><span class="avatar" id="sidebar-avatar"></span><span><strong id="sidebar-name"></strong><small id="sidebar-role"></small></span><span class="profile-chevron">›</span></button></div>
+    </aside>
+    <div class="main-shell"><header class="topbar"><div class="topbar-left"><button id="mobile-menu" class="icon-btn mobile-menu" aria-label="Open navigation" type="button"></button><span id="breadcrumb">Overview</span></div><div class="topbar-right"><span class="today" id="today"></span><span class="topbar-divider"></span><span class="topbar-status"><i></i> Library online</span><button id="logout-button" class="icon-btn" type="button" aria-label="Sign out" title="Sign out"></button></div></header><main id="main-content" tabindex="-1"></main><footer class="app-footer"><span>SmartLib Pro <span class="footer-dot">·</span> A place for curious minds.</span><span id="footer-role"></span></footer></div>
+  </div>
+  <div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+  <div id="modal-layer" class="modal-layer" hidden><section id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"><div class="modal-header"><div><h2 id="modal-title"></h2><p id="modal-description"></p></div><button id="modal-close" class="icon-btn" type="button" aria-label="Close dialog">✕</button></div><div id="modal-body"></div></section></div>
+</body>
+</html>
